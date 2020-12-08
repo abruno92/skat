@@ -1,4 +1,11 @@
-const app = require('app.js');
+const mysql = require('mysql');
+
+const pool = mysql.createPool({
+    connectionLimit: 10,
+    host: 'localhost',
+    user: 'test',
+    database: 'skatdb'
+});
 
 //Get All
 app.get('', (req, res) => {
