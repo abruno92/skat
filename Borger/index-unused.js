@@ -24,7 +24,6 @@ const pool = mysql.createPool({
 // Listen on enviroment port or 5000
 app.listen(port, () => console.log(`Listen on port ${port}`))
 
-const app = require('app.js');
 
 //Get All
 app.get('', (req, res) => {

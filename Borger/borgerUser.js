@@ -1,3 +1,4 @@
+const router = require('express').Router();
 const mysql = require('mysql');
 
 const pool = mysql.createPool({
@@ -8,7 +9,7 @@ const pool = mysql.createPool({
 });
 
 //Get All
-app.get('', (req, res) => {
+router.get('', (req, res) => {
     req.socket.setTimeout(10000);
     pool.getConnection((err, connection) => {
         if(err) throw err
@@ -27,7 +28,7 @@ app.get('', (req, res) => {
 });
 
 //Get an entry by id
-app.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     req.socket.setTimeout(10000);
     pool.getConnection((err, connection) => {
         if(err) throw err
@@ -46,7 +47,7 @@ app.get('/:id', (req, res) => {
 });
 
 //Delete an entry (need to delete both records in table)
-app.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     req.socket.setTimeout(10000);
     pool.getConnection((err, connection) => {
         if(err) throw err
@@ -65,7 +66,7 @@ app.delete('/:id', (req, res) => {
 });
 
 //Add an entry (need to add both records in table)
-app.post('', (req, res) => {
+router.post('', (req, res) => {
     req.socket.setTimeout(10000);
     pool.getConnection((err, connection) => {
         if(err) throw err
@@ -87,7 +88,7 @@ app.post('', (req, res) => {
 });
 
 //Update an entry (need to add both records in table)
-app.put('', (req, res) => {
+router.put('', (req, res) => {
     req.socket.setTimeout(10000);
     pool.getConnection((err, connection) => {
         if(err) throw err
@@ -105,3 +106,5 @@ app.put('', (req, res) => {
         })
     });
 });
+
+module.exports = router;
