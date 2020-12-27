@@ -5,7 +5,7 @@ const pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
     user: 'test',
-    database: 'skatdb'
+    database: 'borger'
 });
 
 //Get All
@@ -39,25 +39,6 @@ router.get('/:id', (req, res) => {
 
             if(!err) {
                 res.send(rows)
-            }else{
-                console.log(err)
-            }
-        })
-    });
-});
-
-//Delete an entry (need to delete both records in table)
-router.delete('/:id', (req, res) => {
-    req.socket.setTimeout(10000);
-    pool.getConnection((err, connection) => {
-        if(err) throw err
-
-        //queryString, callback
-        connection.query('DELETE FROM Address WHERE Id = ?', [req.params.id], (err) => {
-            connection.release() // return the connection to pool
-
-            if(!err) {
-                res.send(`Entry ${[req.params.id]} was successfully deleted`)
             }else{
                 console.log(err)
             }
@@ -100,6 +81,25 @@ router.put('', (req, res) => {
 
             if(!err) {
                 res.send(`Entry was succesfully updated`)
+            }else{
+                console.log(err)
+            }
+        })
+    });
+});
+
+//Delete an entry (need to delete both records in table)
+router.delete('/:id', (req, res) => {
+    req.socket.setTimeout(10000);
+    pool.getConnection((err, connection) => {
+        if(err) throw err
+
+        //queryString, callback
+        connection.query('DELETE FROM Address WHERE Id = ?', [req.params.id], (err) => {
+            connection.release() // return the connection to pool
+
+            if(!err) {
+                res.send(`Entry ${[req.params.id]} was successfully deleted`)
             }else{
                 console.log(err)
             }
