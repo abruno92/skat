@@ -8,9 +8,9 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "skatdb",
-            "database": "skatdb",
-            "username": "antoniasi",
+            "name": "connectiondb",
+            "database": "skat",
+            "username": "root",
             "password": ""
         }
     ]
