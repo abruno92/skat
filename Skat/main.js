@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const skatUser = require('./skatUser');
-const skatUserYear = require('./skatUserYear');
-const skatYear = require('./skatYear');
+// const skatUserYear = require('./skatUserYear');
+// const skatYear = require('./skatYear');
 
 const app = express(); 
 
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/skatUser', skatUser);
-app.use('/skatUserYear', skatUserYear);
-app.use('/skatYear', skatYear);
+// app.use('/skatUserYear', skatUserYear);
+// app.use('/skatYear', skatYear);
 
 app.listen(port, () => { console.log(`listening on ${port}`)});
