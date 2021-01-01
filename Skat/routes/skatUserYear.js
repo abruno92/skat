@@ -8,14 +8,13 @@ const pool = mysql.createPool({
     database: 'skat'
 });
 
-
 // Get All Rows
-router.get('', (req, res) => {
+router.get('/', (req, res) => {
     req.socket.setTimeout(10000);
     pool.getConnection((err, connection) => {
         if(err) throw err
 
-        connection.query('SELECT * FROM SkatUser', (err, rows) => {
+        connection.query('SELECT * FROM SkatUserYear', (err, rows) => {
             connection.release() 
 
             if(!err) {
